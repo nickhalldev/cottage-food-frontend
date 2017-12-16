@@ -13,6 +13,10 @@ class Signup extends React.Component {
       lastname: '',
       email: '',
       address: '',
+      phone: '',
+      zip: '',
+      city: '',
+      state: '',
 
     };
   }
@@ -42,6 +46,24 @@ class Signup extends React.Component {
       <div>
         <h2>Signup</h2>
         <Form onSubmit={this.handleSubmit}>
+        <Form.Group widths="12">
+          <Form.Input
+            name="firstname"
+            onChange={this.handleChange}
+            label="First Name"
+            type="text"
+            placeholder="First Name"
+          />
+          </Form.Group>
+          <Form.Group widths="12">
+            <Form.Input
+              name="lastname"
+              onChange={this.handleChange}
+              label="Last Name"
+              type="text"
+              placeholder="Last Name"
+            />
+            </Form.Group>
           <Form.Group widths="12">
             <Form.Input
               name="username"
@@ -67,23 +89,50 @@ class Signup extends React.Component {
               type="text"
               placeholder="Email"
             />
-          </Form.Group>
+            </Form.Group>
           <Form.Group widths="12">
             <Form.Input
-              name="firstname"
+              name="address"
               onChange={this.handleChange}
-              label="First Name"
+              label="Address"
               type="text"
-              placeholder="First Name"
+              placeholder="Address"
             />
           </Form.Group>
           <Form.Group widths="12">
             <Form.Input
-              name="lastname"
+              name="city"
               onChange={this.handleChange}
-              label="Last Name"
+              label="City"
               type="text"
-              placeholder="Last Name"
+              placeholder="City"
+            />
+          </Form.Group>
+          <Form.Group widths="12">
+            <Form.Input
+              name="set"
+              onChange={this.handleChange}
+              label="State"
+              type="text"
+              placeholder="State"
+            />
+          </Form.Group>
+          <Form.Group widths="12">
+            <Form.Input
+              name="zip"
+              onChange={this.handleChange}
+              label="Zip"
+              type="text"
+              placeholder="Zip"
+            />
+            </Form.Group>
+          <Form.Group widths="12">
+            <Form.Input
+              name="phone"
+              onChange={this.handleChange}
+              label="Phone"
+              type="text"
+              placeholder="Phone"
             />
           </Form.Group>
           <Form.Button>Submit</Form.Button>

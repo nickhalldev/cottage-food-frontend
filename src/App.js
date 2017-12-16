@@ -3,7 +3,7 @@ import './App.css';
 import Signup from './components/signup'
 import Login from './components/login'
 import LoginBar from './components/loginNavbar'
-import Navbar from './routes/routes'
+// import Navbar from './routes/routes'
 import Profile from './components/profile'
 import { withRouter, Route, NavLink } from "react-router-dom";
 
@@ -76,13 +76,20 @@ class App extends React.Component {
            }
 
 
+
   render() {
     return (
       <div>
       {this.props.location.pathname !== "/login" &&
         this.props.location.pathname !== "/signup" ? (
-          <Navbar
-            logout={this.logout}
+          // <Navbar
+          //   logout={this.logout}
+          // />
+          <LoginBar
+            handleLogin = {this.handleLogin}
+            location={this.props.location.pathname}
+            signup={this.signup}
+            backToLogin={this.backToLogin}
           />
         ) : (
           <div>
