@@ -1,10 +1,19 @@
-import { FETCH_PAINTINGS, SELECT_ACTIVE_PAINTING } from './types';
-import artworks from '../data/artworks';
+import { LOGIN_USER, LOGIN_ERROR } from './types';
+import { login } from '../api/index.js'
 
-export function fetchPaintings() {
-  return { type: FETCH_PAINTINGS, payload: artworks };
-}
 
-export function selectPainting(activeID) {
-  return { type: SELECT_ACTIVE_PAINTING, id: activeID };
+export function loginUser(user_params, history) {
+  return function (dispatch){
+  login(user_params)
+    .then(data => {
+      if (data.error){
+        console.log('error');
+        return null
+      } else {
+        localStorage.setItem("token", data["jwt"]);
+        dispatch({ type: LOGIN_USER, payload: data })
+        history.push("/profile")
+      }
+    })
+  }
 }

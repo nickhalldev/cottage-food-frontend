@@ -110,7 +110,7 @@ class Signup extends React.Component {
           </Form.Group>
           <Form.Group widths="12">
             <Form.Input
-              name="set"
+              name="state"
               onChange={this.handleChange}
               label="State"
               type="text"
