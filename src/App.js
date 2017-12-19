@@ -4,18 +4,21 @@ import Signup from './components/signup'
 import Login from './components/login'
 import LoginBar from './components/loginNavbar'
 import Recipe from './components/recipe'
+import MyRecipes from './components/recipesdisplay'
+import Party from './components/party'
+import MyParties from './components/partiesdisplay'
 import Profile from './components/profile'
 import { connect } from 'react-redux'
 import * as actions from "./actions/index"
+import { withRouter, Route} from "react-router-dom";
 
-// import Container from './components/container'
-import { withRouter, Route, NavLink } from "react-router-dom";
 
-const url =  "http://localhost:3001/api/v1/";
 
 class App extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+
+
     this.state = {
       // users: [],
       // user: {},
@@ -26,17 +29,12 @@ class App extends React.Component {
     this.authCheck()
   }
 
-  // handleLogin = (userData) => {
-  //   localStorage.setItem('token', userData.jwt)
-  //   this.setState({user: {username: userData.username, id: userData.id}})
-  // }
-
   authCheck = () => {
     if (localStorage.token){
-      console.log("pathname", this.props.location.pathname)
+      // console.log("pathname", this.props.location.pathname)
       this.props.fetchingUser()
     } else {
-      console.log("not logged in")
+      // console.log("not logged in")
       this.backToLogin()
     }
   }
@@ -51,8 +49,10 @@ class App extends React.Component {
 
 
   render() {
+    // console.log("APP PROPS", this.props)
     return (
       <div>
+
       {this.props.location.pathname !== "/login" &&
         this.props.location.pathname !== "/signup" ? (
           <LoginBar
@@ -73,9 +73,17 @@ class App extends React.Component {
         )}
 
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/login" render={() => <Login handleLogin = {this.handleLogin} profile={this.profile} />}/>
-        <Route exact path="/profile" render={() => <Profile user={this.currentUser} />}/>
-        <Route exact path="/recipe" render={() => <Recipe user={this.currentUser} />}/>
+        <Route exact path="/login" render={() => <Login />}/>
+
+        <Route exact path="/profile" render={() => <Profile  />}/>
+
+        <Route exact path="/myrecipes" render={() => <MyRecipes />}/>
+        <Route exact path="/newrecipe" render={() => <Recipe />}/>
+
+
+        <Route exact path="/myparties" render={() => <MyParties />}/>
+        <Route exact path="/newparty" render={() => <Party />}/>
+
 
 
       </div>
@@ -84,8 +92,9 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
+
   return {
-    current_user: state.user
+    current_user: state.users.current_user
   }
 }
 

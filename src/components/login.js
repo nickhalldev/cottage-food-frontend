@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from 'react-redux'
 import * as actions from "../actions/index"
 import { Form } from "semantic-ui-react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { withRouter, Route, NavLink } from "react-router-dom";
-const url = "http://localhost:3001/api/v1/";
+
+import { withRouter, } from "react-router-dom";
+
 
 class Login extends React.Component {
   constructor(props) {
