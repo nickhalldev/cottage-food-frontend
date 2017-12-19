@@ -4,12 +4,13 @@ import Signup from './components/signup'
 import Login from './components/login'
 import LoginBar from './components/loginNavbar'
 import Recipe from './components/recipe'
+// import Navbar from './routes/routes'
 import Profile from './components/profile'
 import { withRouter, Route, NavLink } from "react-router-dom";
 
 const url =  "http://localhost:3001/api/v1/";
 
-class App extends React.Component {
+class Container extends React.Component {
   constructor(){
     super()
     this.state = {
@@ -20,29 +21,30 @@ class App extends React.Component {
     }
   }
 
-  handleLogin = (userData) => {
-    localStorage.setItem('token', userData.jwt)
-    debugger
-    this.setState({user: {username: userData.username, id: userData.id}})
-  }
+  //don't want signup or login. just want to get user data from set_user
+//put null and actions when I connect to store in my export
+       componentDidMount = () => {
+         if (token) {
+           fetch(`${url}current_user`, {
+             headers: {
+               "content-type": "application/json",
+               accept: "application/json",
+               Authorization: `Token ${localStorage.getItem('jwt')}`
+             }
+           })
+           .then(res => res.json())
+           .then(json => this.setState({ currentUser: json }), () => this.props.history.push("/profile"));
 
-  logout = () => {
-     localStorage.removeItem("token");
-     this.setState({ currentUser: {} });
-     this.props.history.push("/login");
-   };
+         } else {
+           if (!window.location.href.includes("signup")) {
+             this.props.history.push("/login");
+           }
+         }
+       }
 
-   signup = () => {
-     this.props.history.push("/signup");
-   };
 
-   backToLogin = () => {
-     this.props.history.push("/login");
-   };
 
-   profile = () => {
-     this.props.history.push("/profile")
-   }
+
 
   render() {
     return (
@@ -80,4 +82,5 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+
+export default withRouter(Container);

@@ -1,5 +1,5 @@
-import { LOGIN_USER, LOGIN_ERROR } from './types';
-import { login } from '../api/index.js'
+import { SET_USER } from './types';
+import { login, fetchUser } from '../api/index.js'
 
 
 export function loginUser(user_params, history) {
@@ -11,9 +11,19 @@ export function loginUser(user_params, history) {
         return null
       } else {
         localStorage.setItem("token", data["jwt"]);
-        dispatch({ type: LOGIN_USER, payload: data })
+        dispatch({ type: SET_USER, payload: data })
         history.push("/profile")
       }
+    })
+
+  }
+}
+
+export function fetchingUser(){
+  return function(dispatch){
+    fetchUser()
+    .then(data => {
+      console.log(data)
     })
   }
 }
