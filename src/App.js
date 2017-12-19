@@ -5,6 +5,10 @@ import Login from './components/login'
 import LoginBar from './components/loginNavbar'
 import Recipe from './components/recipe'
 import Profile from './components/profile'
+import { connect } from 'react-redux'
+import * as actions from "./actions/index"
+
+// import Container from './components/container'
 import { withRouter, Route, NavLink } from "react-router-dom";
 
 const url =  "http://localhost:3001/api/v1/";
@@ -13,26 +17,31 @@ class App extends React.Component {
   constructor(){
     super()
     this.state = {
-      users: [],
-      currentUser: {},
-      user: {},
-      login: false
+      // users: [],
+      // user: {},
     }
   }
 
-  handleLogin = (userData) => {
-    localStorage.setItem('token', userData.jwt)
-    debugger
-    this.setState({user: {username: userData.username, id: userData.id}})
+  componentDidMount(){
+    this.authCheck()
   }
 
-  logout = () => {
-     localStorage.removeItem("token");
-     this.setState({ currentUser: {} });
-     this.props.history.push("/login");
-   };
+  // handleLogin = (userData) => {
+  //   localStorage.setItem('token', userData.jwt)
+  //   this.setState({user: {username: userData.username, id: userData.id}})
+  // }
 
-   signup = () => {
+  authCheck = () => {
+    if (localStorage.token){
+      console.log("pathname", this.props.location.pathname)
+      this.props.fetchingUser()
+    } else {
+      console.log("not logged in")
+      this.backToLogin()
+    }
+  }
+
+  signup = () => {
      this.props.history.push("/signup");
    };
 
@@ -40,18 +49,12 @@ class App extends React.Component {
      this.props.history.push("/login");
    };
 
-   profile = () => {
-     this.props.history.push("/profile")
-   }
 
   render() {
     return (
       <div>
       {this.props.location.pathname !== "/login" &&
         this.props.location.pathname !== "/signup" ? (
-          // <Navbar
-          //   logout={this.logout}
-          // />
           <LoginBar
             handleLogin = {this.handleLogin}
             location={this.props.location.pathname}
@@ -80,4 +83,12 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = state => {
+  return {
+    current_user: state.user
+  }
+}
+
+
+
+export default withRouter(connect(mapStateToProps, actions)(App));

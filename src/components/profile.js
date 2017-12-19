@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from './navbar'
 
 
 
@@ -15,7 +16,7 @@ class Profile extends React.Component {
     render(){
       return(
         <div>
-        abcde
+        <Navbar />
         </div>
       )
     }

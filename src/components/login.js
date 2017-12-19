@@ -14,7 +14,6 @@ class Login extends React.Component {
       username: "",
       password: ""
     };
-
   }
 
   handleChange = e => {
@@ -24,43 +23,10 @@ class Login extends React.Component {
     });
   };
 
-  static currentUser () {
-    return fetch(`${url}/current_user`, {
-      headers: {'content-type': 'application/json',
-      'accept': 'application/json',
-      'Authorization': localStorage.getItem('jwt')}
-    }).then(res => res.json())
-
-  }
-
-
-
   handleSubmit = e => {
-
     e.preventDefault();
     this.props.loginUser(this.state, this.props.history)
-    //
-    // const body = this.state;
-    //
-    // fetch(`${url}auth`, {
-    //   method: "POST",
-    //   headers: {'content-type': 'application/json',
-    //   'accept': 'application/json',
-    //   'Authorization': `Token ${localStorage.getItem('jwt')}`},
-    //   body: JSON.stringify(body)
-    // })
-    //   .then(res => res.json())
-    //   .then(json => {
-    //     if (!json.error) {
-    //       localStorage.setItem("token", json.jwt);
-    //
-    //     }
-    //   }
-    // )
-    // ;
   };
-
-
 
   render() {
     return (
