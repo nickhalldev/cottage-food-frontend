@@ -18,10 +18,8 @@ class App extends React.Component {
   constructor(props){
     super(props)
 
-
     this.state = {
-      // users: [],
-      // user: {},
+
     }
   }
 
@@ -31,10 +29,8 @@ class App extends React.Component {
 
   authCheck = () => {
     if (localStorage.token){
-      // console.log("pathname", this.props.location.pathname)
       this.props.fetchingUser()
     } else {
-      // console.log("not logged in")
       this.backToLogin()
     }
   }
@@ -92,9 +88,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-
   return {
-    current_user: state.users.current_user
+    current_user: state.users
   }
 }
 

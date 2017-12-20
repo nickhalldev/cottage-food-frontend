@@ -1,10 +1,8 @@
 import { SET_USER, LOGOUT } from './types';
-import { login, fetchUser } from '../api/index.js'
+import { login, fetchUser, fetchUserData } from '../api/index.js'
 
 
 export function loginUser(user_params, history) {
-  console.log('printing user params, then history',user_params, history)
-
   return function (dispatch){
   login(user_params)
     .then(data => {
@@ -13,16 +11,13 @@ export function loginUser(user_params, history) {
         return null
       } else {
         localStorage.setItem("token", data["jwt"]);
-        dispatch({ type: SET_USER, payload: data })
-        history.push("/profile")
+        dispatch(fetchingAllUserData(data.user.id))
       }
     })
-
   }
 }
 
 export function fetchingUser(){
-  // console.log('printing user params, then history',user_params, history)
   return function(dispatch){
     fetchUser()
     .then(data => {
@@ -31,14 +26,26 @@ export function fetchingUser(){
         return null
       } else {
 
-        // localStorage.setItem("token", data["jwt"]);
-        dispatch({ type: SET_USER, payload: data })
-        // console.log('data in fetching user',data)
+        dispatch(fetchingAllUserData(data))
       }
     })
   }
 }
 
+export function fetchingAllUserData(user_id){
+  return function(dispatch){
+    fetchUserData(user_id)
+    .then(data => {
+      if (data.error){
+        console.log('error');//add error handling later
+        return null
+      } else {
+        dispatch({ type: SET_USER, payload: data })
+        // history.push("/profile")
+      }
+    })
+  }
+}
 export function logout(){
   localStorage.clear()
   return {

@@ -26,6 +26,7 @@ class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.loginUser(this.state, this.props.history)
+    this.props.history.push('/profile')
   };
 
   render() {

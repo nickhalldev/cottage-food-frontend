@@ -21,4 +21,11 @@ export function fetchUser(){
     method: "POST",
     body: JSON.stringify({ token: localStorage.token })
   }).then(res => res.json())
+  }
+
+
+export function fetchUserData(user_id){
+  return fetch(`${url}users/${user_id}`)
+  .then(res => res.json())
+
 }

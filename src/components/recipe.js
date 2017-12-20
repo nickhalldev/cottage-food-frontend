@@ -75,6 +75,15 @@ class Recipe extends React.Component {
               placeholder="description"
             />
           </Form.Group>
+          <Form.Group widths="12">
+            <Form.Input
+              name="image"
+              onChange={this.handleChange}
+              label="Image"
+              type='text'
+              placeholder="image"
+            />
+          </Form.Group>
 
           <Form.Button>Submit</Form.Button>
         </Form>
