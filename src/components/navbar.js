@@ -5,6 +5,7 @@ import NewRecipeButton from './addrecipe'
 import UserRecipesButton from './userrecipes'
 import UserPartiesButton from './userparties'
 import PartyButton from './addparty'
+import SearchButton from './addsearch'
 import * as actions from "../actions/index"
 import { withRouter, Route, NavLink } from "react-router-dom";
 
@@ -25,6 +26,7 @@ const Navbar = () => {
       <div className="btn-group btn-group-justified">
        <UserPartiesButton />
         <PartyButton />
+        <SearchButton />
 
 
         <br />

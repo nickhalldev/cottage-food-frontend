@@ -1,5 +1,5 @@
-import { SET_USER, LOGOUT } from './types';
-import { login, fetchUser, fetchUserData } from '../api/index.js'
+import { SET_USER, SET_USERS, LOGOUT } from './types';
+import { login, fetchUser, fetchUsers, fetchUserData } from '../api/index.js'
 
 
 export function loginUser(user_params, history) {
@@ -46,6 +46,23 @@ export function fetchingAllUserData(user_id){
     })
   }
 }
+
+export function fetchingUsers(){
+  return function (dispatch){
+    fetchUsers()
+    .then(data => {
+      if (data.error){
+        console.log('error')
+        return null
+      }
+      else {
+        dispatch({ type: SET_USERS, payload: data})
+      }
+    })
+  }
+}
+
+
 export function logout(){
   localStorage.clear()
   return {

@@ -6,6 +6,8 @@ import LoginBar from './components/loginNavbar'
 import Recipe from './components/recipe'
 import MyRecipes from './components/recipesdisplay'
 import Party from './components/party'
+import BakerSearch from './components/bakersearch'
+import BakerShow from './components/bakershow'
 import MyParties from './components/partiesdisplay'
 import Profile from './components/profile'
 import { connect } from 'react-redux'
@@ -30,6 +32,7 @@ class App extends React.Component {
   authCheck = () => {
     if (localStorage.token){
       this.props.fetchingUser()
+      this.props.fetchingUsers()
     } else {
       this.backToLogin()
     }
@@ -76,9 +79,13 @@ class App extends React.Component {
         <Route exact path="/myrecipes" render={() => <MyRecipes />}/>
         <Route exact path="/newrecipe" render={() => <Recipe />}/>
 
+        <Route exact path="/search" render={() => <BakerSearch />}/>
+
 
         <Route exact path="/myparties" render={() => <MyParties />}/>
         <Route exact path="/newparty" render={() => <Party />}/>
+
+        <Route exact path="/baker/:id" render={() => <BakerShow />}/>
 
 
 
@@ -88,7 +95,11 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
+  // console.log('im current user',state.users.current_user)
+  // console.log('im all users',state.users.users)
+
   return {
+    users: state.users.users,
     current_user: state.users
   }
 }

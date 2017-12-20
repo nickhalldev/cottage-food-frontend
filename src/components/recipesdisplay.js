@@ -2,8 +2,6 @@ import React from 'react';
 import * as actions from "../actions/index"
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom"
-const url = "http://localhost:3001/api/v1/"
-// const RecipeData = {}
 
 const MyRecipes = (props) => {
 

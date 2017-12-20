@@ -23,9 +23,15 @@ export function fetchUser(){
   }).then(res => res.json())
   }
 
+export function fetchUsers(){
+  return fetch(`${url}users`)
+  .then(res => res.json())
+  
+}
 
 export function fetchUserData(user_id){
   return fetch(`${url}users/${user_id}`)
   .then(res => res.json())
+
 
 }

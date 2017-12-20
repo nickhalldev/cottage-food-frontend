@@ -5,6 +5,7 @@
   "dependencies": {
     "google-maps-react": "^1.1.2",
     "react": "^16.2.0",
+    "react-datetime": "^2.11.1",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
