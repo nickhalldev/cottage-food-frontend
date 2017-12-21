@@ -2,6 +2,7 @@ import React from 'react';
 import * as actions from "../actions/index"
 import { connect } from 'react-redux'
 import { withRouter, NavLink } from "react-router-dom"
+import MapContainer from './map'
 
 const BakerSearch = (props) => {
 
@@ -19,7 +20,9 @@ let userVariable = props.users[0] ? (
 return(
   <div>
   {userVariable}
-
+  {(props.current_user.latitude && props.users[0]) ?
+  <MapContainer latitude={props.current_user.latitude} longitude={props.current_user.longitude} addresses={props.users}/>
+  : null }
   </div>
 )
 
@@ -27,9 +30,13 @@ return(
 
 
 const mapStateToProps = state => {
+  console.log('this is current_users',state.users.current_user.latitude)
+
   return {
-    users: state.users.users
+    users: state.users.users,
+    current_user: state.users
   }
+  console.log('this is users after ',this.props.users)
 }
   //
 

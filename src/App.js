@@ -13,6 +13,7 @@ import Profile from './components/profile'
 import { connect } from 'react-redux'
 import * as actions from "./actions/index"
 import { withRouter, Route} from "react-router-dom";
+import Navbar from './components/navbar'
 
 
 
@@ -51,25 +52,17 @@ class App extends React.Component {
     // console.log("APP PROPS", this.props)
     return (
       <div>
+      {localStorage.token ? (
+        <Navbar />) : (
+             <LoginBar
+               handleLogin = {this.handleLogin}
+               location={this.props.location.pathname}
+               signup={this.signup}
+               backToLogin={this.backToLogin}
+             />
+         )
+      }
 
-      {this.props.location.pathname !== "/login" &&
-        this.props.location.pathname !== "/signup" ? (
-          <LoginBar
-            handleLogin = {this.handleLogin}
-            location={this.props.location.pathname}
-            signup={this.signup}
-            backToLogin={this.backToLogin}
-          />
-        ) : (
-          <div>
-          <LoginBar
-            handleLogin = {this.handleLogin}
-            location={this.props.location.pathname}
-            signup={this.signup}
-            backToLogin={this.backToLogin}
-          />
-          </div>
-        )}
 
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" render={() => <Login />}/>

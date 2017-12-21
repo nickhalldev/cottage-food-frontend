@@ -6,7 +6,7 @@ const LoginBar = props => {
     <Menu>
       {props.location === "/login" ? (
         <Menu.Item position="left" name="Sign up" onClick={props.signup}>
-        Click here to sign up
+        Sign up here!
         </Menu.Item>
       ) : (
         <Menu.Item position="left" name="To Login" onClick={props.backToLogin}>
