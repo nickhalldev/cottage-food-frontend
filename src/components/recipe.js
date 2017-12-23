@@ -1,17 +1,22 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
+import * as actions from "../actions/index"
+import { connect } from 'react-redux'
+
+import { withRouter, NavLink } from "react-router-dom"
+
 const url = "http://localhost:3001/api/v1/";
 
 
 class Recipe extends React.Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       course_type: '',
       price: '',
       description: '',
+      image: '',
     };
   }
 
@@ -49,15 +54,14 @@ class Recipe extends React.Component {
             placeholder="Name"
           />
           </Form.Group>
-          <Form.Group widths="12">
-            <Form.Input
-              name="course_type"
-              onChange={this.handleChange}
-              label="Course Type"
-              type="text"
-              placeholder="Course Type"
-            />
-            </Form.Group>
+        Course Type
+        <select id='' name='course_type' onChange={this.handleDropdownChange}>
+          <option name="appetizer" value="appetizer">Appetizer</option>
+          <option name="entree" value="entree">Entree</option>
+          <option name="side" value="side">Side</option>
+          <option name="dessert" value="dessert">Dessert</option>
+          </select>
+
           <Form.Group widths="12">
             <Form.Input
               name="price"
@@ -92,4 +96,11 @@ class Recipe extends React.Component {
     );
   }
 }
-export default Recipe;
+
+const mapStateToProps = state => {
+  return {
+    current_user: state.users,
+  }
+}
+
+export default withRouter(connect(mapStateToProps, null)(Recipe))

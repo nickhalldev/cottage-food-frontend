@@ -20,24 +20,20 @@ let userVariable = props.users[0] ? (
 return(
   <div>
   {userVariable}
-  {(props.current_user.latitude && props.users[0]) ?
-  <MapContainer latitude={props.current_user.latitude} longitude={props.current_user.longitude} addresses={props.users}/>
+  {(props.users[0] && props.current_user) ?
+  <MapContainer current_user={props.current_user} latitude={props.current_user.latitude} longitude={props.current_user.longitude} addresses={props.users}/>
   : null }
-  </div>
-)
-
+  </div>)
 }
-
 
 const mapStateToProps = state => {
-  console.log('this is current_users',state.users.current_user.latitude)
-
+  // console.log("Map State TP in bakersearch", state)
   return {
     users: state.users.users,
-    current_user: state.users
+    current_user: state.users.current_user.current_user
   }
-  console.log('this is users after ',this.props.users)
 }
-  //
 
-export default withRouter(connect(mapStateToProps, actions)(BakerSearch))
+
+export default withRouter(connect(mapStateToProps, null)(BakerSearch))
+//

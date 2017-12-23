@@ -7,6 +7,7 @@ import Recipe from './components/recipe'
 import MyRecipes from './components/recipesdisplay'
 import Party from './components/party'
 import BakerSearch from './components/bakersearch'
+import CottageFoodMap from './components/cottagefoodmap'
 import BakerShow from './components/bakershow'
 import MyParties from './components/partiesdisplay'
 import Profile from './components/profile'
@@ -73,6 +74,7 @@ class App extends React.Component {
         <Route exact path="/newrecipe" render={() => <Recipe />}/>
 
         <Route exact path="/search" render={() => <BakerSearch />}/>
+        <Route exact path="/cottagelaws" render={() => <CottageFoodMap />}/>
 
 
         <Route exact path="/myparties" render={() => <MyParties />}/>

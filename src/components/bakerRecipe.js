@@ -1,9 +1,7 @@
 import React from 'react';
 import * as actions from "../actions/index"
 import { connect } from 'react-redux'
-import { withRouter, NavLink } from "react-router-dom"
-import Datetime from 'react-datetime';
-import MapContainer from './map'
+import { withRouter } from "react-router-dom"
 
 class BakerRecipe extends React.Component {
   constructor(){
@@ -23,15 +21,11 @@ class BakerRecipe extends React.Component {
 
   handleDropdownChange = (e) => {
     let previousTotal = this.state.recipeCost
-
-    console.log(previousTotal)
     this.setState({
         recipeCost: (e.target.value * this.props.price),
         quantity: e.target.value,
     }, () => this.props.handleTotalCostChange(this.state.recipeCost - previousTotal))
-    // { this.props.changeParentsTotal(differenceIn2State) }
   };
-
 
 countDropdown = (recipeID) => {
   return (
@@ -54,20 +48,16 @@ render(){
 
 return(
   <div>
-
   {this.countDropdown()}
   {this.props.name} @ ${this.props.price} per serving for a cost of ${this.state.recipeCost}
   </div>
   )
-
   }
-
 }
 
 const mapStateToProps = state => {
   return {
     users: state.users.users,
-
   }
 }
 

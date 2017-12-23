@@ -21,6 +21,7 @@ export function fetchingUser(){
   return function(dispatch){
     fetchUser()
     .then(data => {
+      console.log("FETCH USER", data)
       if (data.error){
         console.log('error');
         return null
@@ -36,6 +37,7 @@ export function fetchingAllUserData(user_id){
   return function(dispatch){
     fetchUserData(user_id)
     .then(data => {
+      console.log("FETCHING ALL DATA",data)
       if (data.error){
         console.log('error');//add error handling later
         return null
