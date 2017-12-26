@@ -23,7 +23,6 @@ const Navbar = () => {
         <br />
       <div className="btn-group btn-group-justified">
        <UserPartiesButton />
-        <PartyButton />
         <SearchButton />
         <CottageFoodLawsButton />
 

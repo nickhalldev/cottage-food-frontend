@@ -5,7 +5,6 @@ import Login from './components/login'
 import LoginBar from './components/loginNavbar'
 import Recipe from './components/recipe'
 import MyRecipes from './components/recipesdisplay'
-import Party from './components/party'
 import BakerSearch from './components/bakersearch'
 import CottageFoodMap from './components/cottagefoodmap'
 import BakerShow from './components/bakershow'
@@ -78,7 +77,6 @@ class App extends React.Component {
 
 
         <Route exact path="/myparties" render={() => <MyParties />}/>
-        <Route exact path="/newparty" render={() => <Party />}/>
 
         <Route exact path="/baker/:id" render={() => <BakerShow />}/>
 

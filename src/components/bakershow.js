@@ -18,15 +18,14 @@ class BakerShow extends React.Component {
       eventDateTime: moment(),
       totalCost: 0,
       recipeTransactions: {},
-      addresses: [{lat: 40.748541,lng: -73.985763}],
+      addresses: [],
     }
     this.handleTotalCostChange = this.handleTotalCostChange.bind(this)
   }
 
-
-
 componentDidMount(){
   let baker_id = this.props.match.params.id
+
   if(baker_id){
   this.fetchBaker(baker_id)
   }
@@ -42,7 +41,9 @@ fetchBaker = (baker_id) => {
     lastname: res.current_user.lastname,
     latitude: res.current_user.latitude,
     longitude: res.current_user.longitude,
-  }))
+    addresses:[{username: res.current_user.username, latitude: res.current_user.latitude, longitude: res.current_user.longitude}]
+    })
+  )
 }
 
 handleDateChange = (event) => {
@@ -81,9 +82,9 @@ handleSubmit = () => {
       total_cost: this.state.totalCost,
       delivery_date_time: this.state.eventDateTime
     })
-  }).then(() => this.props.history.push('/search'))
+  }).then(res => res.json())
+    .then(res => console.log('im the response to the post',res))
 }
-
 
 recipesVariable = () => {
   if (this.state.recipes) {
@@ -119,7 +120,7 @@ return(
     Current Cost ${this.state.totalCost}
     <br /><br />
     <button onClick={this.handleSubmit}>Submit </button>
-    {(this.state.longitude && this.state.latitude) ?
+    {(this.state.longitude && this.state.latitude && this.state.addresses[0]) ?
     <MapContainer longitude={this.state.longitude} latitude={this.state.latitude} addresses={this.state.addresses}/>
     : <p>loading map.....</p>
     }
@@ -129,12 +130,10 @@ return(
 }
 
 const mapStateToProps = state => {
-  // console.log('hopefully my longitude',state.users.current_user)
   return {
     users: state.users.users,
     current_user: state.users.current_user.current_user
   }
 }
 
-
-export default withRouter(connect(mapStateToProps, actions)(BakerShow))
+export default withRouter(connect(mapStateToProps, null)(BakerShow))

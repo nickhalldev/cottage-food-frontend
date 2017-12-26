@@ -19,6 +19,10 @@ class BakerRecipe extends React.Component {
     })
   };
 
+  handleRecipeSutmit = (e) => {
+
+  }
+
   handleDropdownChange = (e) => {
     let previousTotal = this.state.recipeCost
     this.setState({
