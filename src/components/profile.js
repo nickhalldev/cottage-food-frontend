@@ -8,7 +8,6 @@ class Profile extends React.Component {
     super(props);
     this.state = {
     };
-    console.log(this.props.current_user.lastname)
   }
 
   displayVariable = () => {
@@ -32,8 +31,6 @@ class Profile extends React.Component {
   }
 
   const mapStateToProps = state => {
-    console.log(state)
-    console.log(state.users.current_user.firstname)
     return {
       current_user: state.users.current_user
     }

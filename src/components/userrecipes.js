@@ -1,13 +1,14 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 
+
 const UserRecipesButton = (props) => {
 
 
     return(
       <div>
       <NavLink to='/myrecipes'>
-        <button>
+        <button className='ui inverted red button'>
           My Recipes
         </button>
       </NavLink>

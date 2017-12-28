@@ -7,7 +7,7 @@ const UserPartiesButton = (props) => {
     return(
       <div>
       <NavLink to='/myparties'>
-        <button>
+        <button className='ui inverted blue button'>
           My Parties
         </button>
       </NavLink>

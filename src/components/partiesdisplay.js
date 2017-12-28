@@ -51,7 +51,6 @@ const MyParties = (props) => {
 }
 
 const mapStateToProps = state => {
-   console.log('state.user in map state',state)
   return {
     baker_transactions: state.users.current_user.baker_transactions,
     purchaser_transactions: state.users.current_user.purchaser_transactions

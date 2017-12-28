@@ -1,5 +1,4 @@
 import React from 'react';
-import * as actions from "../actions/index"
 import { connect } from 'react-redux'
 import { withRouter, NavLink } from "react-router-dom"
 import MapContainer from './map'

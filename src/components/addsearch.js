@@ -7,7 +7,7 @@ const SearchButton = (props) => {
     return(
       <div>
       <NavLink to='/search'>
-        <button>
+        <button className='ui inverted blue button'>
           Find a baker
         </button>
       </NavLink>

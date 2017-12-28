@@ -1,5 +1,4 @@
 import React from 'react';
-import * as actions from "../actions/index"
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom"
 import Datetime from 'react-datetime';
@@ -83,7 +82,6 @@ handleSubmit = () => {
       delivery_date_time: this.state.eventDateTime
     })
   }).then(res => res.json())
-    .then(res => console.log('im the response to the post',res))
 }
 
 recipesVariable = () => {

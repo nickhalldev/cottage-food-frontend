@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import reducer from './reducers/root.js'
 
-const middleware = [thunk]
+// const middleware = [thunk]
 
 const store = createStore(
   reducer,

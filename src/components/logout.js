@@ -7,7 +7,7 @@ const LogoutButton = (props) => {
     return(
       <div>
       <NavLink to='/login'>
-        <button onClick={props.logout}>
+        <button onClick={props.logout} className='ui inverted violet button'>
           Logout
         </button>
       </NavLink>

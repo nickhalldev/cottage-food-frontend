@@ -9,7 +9,6 @@ const defaultState = { current_user: {}, users: {} }
 export default function users(state = defaultState, action){
   switch(action.type){
     case SET_USER:
-    console.log("SET USER", action)
      return {
       ...state,
       current_user: action.payload

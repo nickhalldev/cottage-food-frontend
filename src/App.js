@@ -51,7 +51,7 @@ class App extends React.Component {
   render() {
     // console.log("APP PROPS", this.props)
     return (
-      <div>
+      <div align="center">
       {localStorage.token ? (
         <Navbar />) : (
              <LoginBar
@@ -66,6 +66,7 @@ class App extends React.Component {
 
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" render={() => <Login />}/>
+
 
         <Route exact path="/profile" render={() => <Profile  />}/>
 

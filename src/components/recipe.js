@@ -1,12 +1,9 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
-import * as actions from "../actions/index"
 import { connect } from 'react-redux'
-
-import { withRouter, NavLink } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 const url = "http://localhost:3001/api/v1/";
-
 
 class Recipe extends React.Component {
   constructor(props) {
