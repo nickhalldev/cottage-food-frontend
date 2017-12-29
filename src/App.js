@@ -51,7 +51,7 @@ class App extends React.Component {
   render() {
     // console.log("APP PROPS", this.props)
     return (
-      <div align="center">
+      <div className="navbar">
       {localStorage.token ? (
         <Navbar />) : (
              <LoginBar

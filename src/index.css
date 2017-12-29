@@ -4,6 +4,89 @@ body {
   font-family: sans-serif;
 }
 
+.navbar{
+  position: sticky;
+  top: 0;
+}
+.ui.inverted.segment.buttons{
+width: 100%;
+left:0;
+right:0;
+padding-left: 25%;
+padding-right: 20%;
+}
+
+
+.column {
+    float: left;
+    padding: 10px;
+}
+
+/*splitting out the map*/
+.left {
+  width: 8%;
+}
+.right {
+
+}
+
+.user-links{
+  width: 10%;
+
+}
+
+.select-box {
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   width: 100px;
+}
+
+.ui.login-menu.menu{
+  background-color: black;
+}
+.a.left.item {
+  text-align: left;
+  color: blue;
+}
+
+.map-key{
+  padding-left: 10px;
+  border: 1px solid black;
+  width: 27.5%;
+  margin-left: 37.5%;
+  margin-right: 37.5%;
+}
+
+.map-key > div > div {
+  display: inline-block;
+  border: 1px solid black;
+  height: 10px;
+  width: 10px;
+  margin-right: 5px;
+}
+
+.key-blue{
+  background-color: blue;
+}
+.key-purple{
+  background-color: purple;
+}
+.key-red{
+  background-color: red;
+}
+
+.map-baker-search{
+
+  width: 75%;
+  height: 300px;
+  float: right;
+}
+
+
+
+
+
 .rdt {
   position: relative;
 }

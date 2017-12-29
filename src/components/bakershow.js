@@ -109,12 +109,12 @@ return(
     <Datetime
     onChange={this.handleDateChange}
     inputProps={{ placeholder: new Date() }}
-    /> <br /><br />
+    /> <br />
   </div>
   <div>
     Qty
     {this.recipesVariable()}
-  </div><br /><br />
+  </div><br />
     Current Cost ${this.state.totalCost}
     <br /><br />
     <button onClick={this.handleSubmit}>Submit </button>

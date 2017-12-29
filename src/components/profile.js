@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux'
 import * as actions from "../actions/index"
 
+var titleize = require('titleize')
+
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -10,10 +12,17 @@ class Profile extends React.Component {
     };
   }
 
-  displayVariable = () => {
-    if (this.props.current_user.username) {
+  
+
+  displayUser = () => {
+    console.log(this.props.current_user.current_user)
+    if (this.props.current_user.current_user) {
       return ( <div>
-        Hey {this.props.current_user.firstname} {this.props.current_user.lastname}!
+        <br />
+        <h3>Hey {titleize(this.props.current_user.current_user.firstname)} {titleize(this.props.current_user.current_user.lastname)}!</h3>
+        <h5>Welcome back to Cottage, where you can find or sell home baked meals to other locals.</h5>
+
+
         </div>
       )
     }
@@ -22,7 +31,7 @@ class Profile extends React.Component {
     render(){
       return(
         <div>
-        {this.displayVariable()}
+        {this.displayUser()}
         <br />
         </div>
       )

@@ -4,26 +4,31 @@ import { withRouter, NavLink } from "react-router-dom"
 import MapContainer from './map'
 
 const BakerSearch = (props) => {
+var titleize = require('titleize')
 
 let userVariable = props.users[0] ? (
       <div>
-      <h1>Available bakers</h1>
+      <h1>Available Bakers</h1>
         {props.users.map((user, index) =>{
-          return <div key={user.id}>
-            <NavLink to={`/baker/${user.id}`}>{user.username} </NavLink>
+          return <div className="user-links" key={user.id}>
+            <NavLink to={`/baker/${user.id}`}>{titleize(user.username)} </NavLink>
           </div>
         })}
       </div>
   ) : null
 
 return(
-  <div>
-  {userVariable}
-  {(props.users[0] && props.current_user) ?
-  <MapContainer current_user={props.current_user} latitude={props.current_user.latitude} longitude={props.current_user.longitude} addresses={props.users}/>
-  : null }
-  </div>)
+
+    <div>
+        {userVariable}
+      {(props.users[0] && props.current_user) ?
+      <MapContainer current_user={props.current_user} latitude={props.current_user.latitude} longitude={props.current_user.longitude} addresses={props.users}/>
+      : null }
+  </div>
+  )
 }
+
+
 
 const mapStateToProps = state => {
   // console.log("Map State TP in bakersearch", state)
@@ -35,4 +40,8 @@ const mapStateToProps = state => {
 
 
 export default withRouter(connect(mapStateToProps, null)(BakerSearch))
-//
+
+// <div className="column map-baker-search">
+// </div>
+// <div className="column user-baker-search">
+// </div>

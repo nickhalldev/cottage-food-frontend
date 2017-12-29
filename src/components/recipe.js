@@ -46,25 +46,28 @@ class Recipe extends React.Component {
           <Form.Input
             name="name"
             onChange={this.handleChange}
-            label="Name"
+            label="Course Name"
             type="text"
-            placeholder="Name"
+            placeholder="Course Name"
           />
           </Form.Group>
         Course Type
-        <select id='' name='course_type' onChange={this.handleDropdownChange}>
-          <option name="appetizer" value="appetizer">Appetizer</option>
-          <option name="entree" value="entree">Entree</option>
-          <option name="side" value="side">Side</option>
-          <option name="dessert" value="dessert">Dessert</option>
-          </select>
 
+        <div className="select-box">
+          <select onChange={this.handleDropdownChange}>
+            <option name="appetizer" value="appetizer">Appetizer</option>
+            <option name="entree" value="entree">Entree</option>
+            <option name="side" value="side">Side</option>
+            <option name="dessert" value="dessert">Dessert</option>
+          </select>
+        </div>
+        <br />
           <Form.Group widths="12">
             <Form.Input
               name="price"
               onChange={this.handleChange}
-              label="price"
-              placeholder="price"
+              label="Price"
+              placeholder="Price"
             />
           </Form.Group>
           <Form.Group widths="12">
@@ -73,7 +76,7 @@ class Recipe extends React.Component {
               onChange={this.handleChange}
               label="Description"
               type='text'
-              placeholder="description"
+              placeholder="Description"
             />
           </Form.Group>
           <Form.Group widths="12">
@@ -82,7 +85,7 @@ class Recipe extends React.Component {
               onChange={this.handleChange}
               label="Image"
               type='text'
-              placeholder="image"
+              placeholder="Image"
             />
           </Form.Group>
 

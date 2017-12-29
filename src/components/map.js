@@ -32,6 +32,7 @@ export class MapContainer extends React.Component {
     }
 
 mapResults = () => {
+
   return (this.props.addresses.map(result => {
     return (
       <Marker
@@ -43,7 +44,8 @@ mapResults = () => {
         lat: parseFloat(result.latitude),
         lng: parseFloat(result.longitude)
       }
-    }/>
+    }
+    />
 
   )
   }))
@@ -60,6 +62,7 @@ mapDisplay =  () => {
   google={this.props.google}
   zoom={13}
   style={style}
+
   initialCenter={{
     lat: parseFloat(this.props.latitude),
     lng: parseFloat(this.props.longitude)
