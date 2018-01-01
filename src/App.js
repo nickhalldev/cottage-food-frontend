@@ -4,109 +4,86 @@ import Signup from './components/signup'
 import Login from './components/login'
 import LoginBar from './components/loginNavbar'
 import Recipe from './components/recipe'
-// import Navbar from './routes/routes'
+import MyRecipes from './components/recipesdisplay'
+import RecipeShow from './components/recipeshow'
+import BakerSearch from './components/bakersearch'
+import CottageFoodMap from './components/cottagefoodmap'
+import BakerShow from './components/bakershow'
+import MyParties from './components/partiesdisplay'
 import Profile from './components/profile'
-import { withRouter, Route, NavLink } from "react-router-dom";
+import { connect } from 'react-redux'
+import * as actions from "./actions/index"
+import { withRouter, Route} from "react-router-dom";
+import Navbar from './components/navbar'
 
-const url =  "http://localhost:3001/api/v1/";
+
 
 class App extends React.Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
+
     this.state = {
-      users: [],
-      currentUser: {},
-      user: {},
-      login: false
+
     }
   }
 
-  handleLogin = (userData) => {
-    localStorage.setItem('token', userData.jwt)
-    debugger
-    this.setState({user: {username: userData.username, id: userData.id}})
+  componentDidMount(){
+    this.authCheck()
   }
 
-      logout = () => {
-         localStorage.removeItem("token");
-         this.setState({ currentUser: {} });
-         this.props.history.push("/login");
-       };
+  authCheck = () => {
+    if (localStorage.token){
+      this.props.fetchingUser()
+      this.props.fetchingUsers()
+    } else {
+      this.backToLogin()
+    }
+  }
 
-       signup = () => {
-         this.props.history.push("/signup");
-       };
+  signup = () => {
+     this.props.history.push("/signup");
+   };
 
-       backToLogin = () => {
-         this.props.history.push("/login");
-       };
-
-       profile = () => {
-         this.props.history.push("/profile")
-       }
-
-       componentDidMount = () => {
-         const token = localStorage.getItem("token");
-
-         if (token) {
-           fetch(`${url}current_user`, {
-             headers: {
-               "content-type": "application/json",
-               accept: "application/json",
-               Authorization: `Token ${localStorage.getItem('jwt')}`
-             }
-           })
-           .then(res => res.json())
-           .then(json => this.setState({ currentUser: json }), () => this.props.history.push("/profile"));
-
-         } else {
-           if (!window.location.href.includes("signup")) {
-             this.props.history.push("/login");
-           }
-         }
-       }
-
-       componentDidMount = ( ) => {
-         fetch(`${url}users`)
-           .then(res => res.json())
-           .then(json =>
-             this.setState({
-               users: json
-             })
-           )
-           }
-
+   backToLogin = () => {
+     this.props.history.push("/login");
+   };
 
 
   render() {
+    // console.log("APP PROPS", this.props)
     return (
-      <div>
-      {this.props.location.pathname !== "/login" &&
-        this.props.location.pathname !== "/signup" ? (
-          // <Navbar
-          //   logout={this.logout}
-          // />
-          <LoginBar
-            handleLogin = {this.handleLogin}
-            location={this.props.location.pathname}
-            signup={this.signup}
-            backToLogin={this.backToLogin}
-          />
-        ) : (
-          <div>
-          <LoginBar
-            handleLogin = {this.handleLogin}
-            location={this.props.location.pathname}
-            signup={this.signup}
-            backToLogin={this.backToLogin}
-          />
-          </div>
-        )}
+      <div className="navbar">
+      {localStorage.token ? (
+        <Navbar />) : (
+             <LoginBar
+               handleLogin = {this.handleLogin}
+               location={this.props.location.pathname}
+               signup={this.signup}
+               backToLogin={this.backToLogin}
+             />
+         )
+      }
+
 
         <Route exact path="/signup" component={Signup} />
-        <Route exact path="/login" render={() => <Login handleLogin = {this.handleLogin} profile={this.profile} />}/>
-        <Route exact path="/profile" render={() => <Profile user={this.currentUser} />}/>
-        <Route exact path="/recipe" render={() => <Recipe user={this.currentUser} />}/>
+        <Route exact path="/login" render={() => <Login />}/>
+
+
+        <Route exact path="/profile" render={() => <Profile  />}/>
+
+        <Route exact path="/myrecipes" render={() => <MyRecipes />}/>
+        <Route exact path="/myrecipes/:id" render={() => <RecipeShow />}/>
+
+        <Route exact path="/newrecipe" render={() => <Recipe />}/>
+
+        <Route exact path="/search" render={() => <BakerSearch />}/>
+        <Route exact path="/cottagelaws" render={() => <CottageFoodMap />}/>
+
+
+        <Route exact path="/myparties" render={() => <MyParties />}/>
+
+        <Route exact path="/baker/:id" render={() => <BakerShow />}/>
+
 
 
       </div>
@@ -114,4 +91,16 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App);
+const mapStateToProps = state => {
+  // console.log('im current user',state.users.current_user)
+  // console.log('im all users',state.users.users)
+
+  return {
+    users: state.users.users,
+    current_user: state.users
+  }
+}
+
+
+
+export default withRouter(connect(mapStateToProps, actions)(App));

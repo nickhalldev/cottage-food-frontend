@@ -1,17 +1,19 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
+import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom"
+
 const url = "http://localhost:3001/api/v1/";
 
-
 class Recipe extends React.Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
     this.state = {
       name: '',
       course_type: '',
       price: '',
       description: '',
+      image: '',
     };
   }
 
@@ -44,26 +46,28 @@ class Recipe extends React.Component {
           <Form.Input
             name="name"
             onChange={this.handleChange}
-            label="Name"
+            label="Course Name"
             type="text"
-            placeholder="Name"
+            placeholder="Course Name"
           />
           </Form.Group>
-          <Form.Group widths="12">
-            <Form.Input
-              name="course_type"
-              onChange={this.handleChange}
-              label="Course Type"
-              type="text"
-              placeholder="Course Type"
-            />
-            </Form.Group>
+        Course Type
+
+        <div className="select-box">
+          <select onChange={this.handleDropdownChange}>
+            <option name="appetizer" value="appetizer">Appetizer</option>
+            <option name="entree" value="entree">Entree</option>
+            <option name="side" value="side">Side</option>
+            <option name="dessert" value="dessert">Dessert</option>
+          </select>
+        </div>
+        <br />
           <Form.Group widths="12">
             <Form.Input
               name="price"
               onChange={this.handleChange}
-              label="price"
-              placeholder="price"
+              label="Price"
+              placeholder="Price"
             />
           </Form.Group>
           <Form.Group widths="12">
@@ -72,7 +76,16 @@ class Recipe extends React.Component {
               onChange={this.handleChange}
               label="Description"
               type='text'
-              placeholder="description"
+              placeholder="Description"
+            />
+          </Form.Group>
+          <Form.Group widths="12">
+            <Form.Input
+              name="image"
+              onChange={this.handleChange}
+              label="Image"
+              type='text'
+              placeholder="Image"
             />
           </Form.Group>
 
@@ -83,4 +96,11 @@ class Recipe extends React.Component {
     );
   }
 }
-export default Recipe;
+
+const mapStateToProps = state => {
+  return {
+    current_user: state.users,
+  }
+}
+
+export default withRouter(connect(mapStateToProps, null)(Recipe))

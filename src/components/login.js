@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from 'react-redux'
 import * as actions from "../actions/index"
 import { Form } from "semantic-ui-react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { withRouter, Route, NavLink } from "react-router-dom";
-const url = "http://localhost:3001/api/v1/";
+
+import { withRouter, } from "react-router-dom";
+
 
 class Login extends React.Component {
   constructor(props) {
@@ -14,7 +14,6 @@ class Login extends React.Component {
       username: "",
       password: ""
     };
-
   }
 
   handleChange = e => {
@@ -24,43 +23,11 @@ class Login extends React.Component {
     });
   };
 
-  static currentUser () {
-    return fetch(`${url}/current_user`, {
-      headers: {'content-type': 'application/json',
-      'accept': 'application/json',
-      'Authorization': localStorage.getItem('jwt')}
-    }).then(res => res.json())
-
-  }
-
-
-
   handleSubmit = e => {
-
     e.preventDefault();
     this.props.loginUser(this.state, this.props.history)
-    //
-    // const body = this.state;
-    //
-    // fetch(`${url}auth`, {
-    //   method: "POST",
-    //   headers: {'content-type': 'application/json',
-    //   'accept': 'application/json',
-    //   'Authorization': `Token ${localStorage.getItem('jwt')}`},
-    //   body: JSON.stringify(body)
-    // })
-    //   .then(res => res.json())
-    //   .then(json => {
-    //     if (!json.error) {
-    //       localStorage.setItem("token", json.jwt);
-    //
-    //     }
-    //   }
-    // )
-    // ;
+    this.props.history.push('/profile')
   };
-
-
 
   render() {
     return (
