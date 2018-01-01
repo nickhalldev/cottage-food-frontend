@@ -5,6 +5,7 @@ import Login from './components/login'
 import LoginBar from './components/loginNavbar'
 import Recipe from './components/recipe'
 import MyRecipes from './components/recipesdisplay'
+import RecipeShow from './components/recipeshow'
 import BakerSearch from './components/bakersearch'
 import CottageFoodMap from './components/cottagefoodmap'
 import BakerShow from './components/bakershow'
@@ -71,6 +72,8 @@ class App extends React.Component {
         <Route exact path="/profile" render={() => <Profile  />}/>
 
         <Route exact path="/myrecipes" render={() => <MyRecipes />}/>
+        <Route exact path="/myrecipes/:id" render={() => <RecipeShow />}/>
+
         <Route exact path="/newrecipe" render={() => <Recipe />}/>
 
         <Route exact path="/search" render={() => <BakerSearch />}/>

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as actions from "../actions/index"
 import { connect } from 'react-redux'
-import { withRouter } from "react-router-dom"
+import { withRouter, NavLink } from "react-router-dom"
 
 const MyRecipes = (props) => {
 
@@ -9,7 +9,9 @@ let recipeVariable = props.recipes ? (
       <div>
       <h1>My Saved Recipes</h1>
         {props.recipes.map((recipe, index) =>{
-          return <div key={index}> {recipe.name} </div>
+          return <div key={index}>
+          <NavLink to={`myrecipes/${recipe.id}`}>{recipe.name}</NavLink>
+          </div>
         })}
       </div>
   ) : null

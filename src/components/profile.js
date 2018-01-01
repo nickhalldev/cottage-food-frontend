@@ -12,7 +12,7 @@ class Profile extends React.Component {
     };
   }
 
-  
+
 
   displayUser = () => {
     console.log(this.props.current_user.current_user)
@@ -20,7 +20,7 @@ class Profile extends React.Component {
       return ( <div>
         <br />
         <h3>Hey {titleize(this.props.current_user.current_user.firstname)} {titleize(this.props.current_user.current_user.lastname)}!</h3>
-        <h5>Welcome back to Cottage, where you can find or sell home baked meals to other locals.</h5>
+        <h5>Welcome back to Cottage, where you can buy or sell home baked meals to other locals.</h5>
 
 
         </div>

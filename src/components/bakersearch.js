@@ -21,9 +21,11 @@ return(
 
     <div>
         {userVariable}
-      {(props.users[0] && props.current_user) ?
-      <MapContainer current_user={props.current_user} latitude={props.current_user.latitude} longitude={props.current_user.longitude} addresses={props.users}/>
-      : null }
+        <div className="baker-map-container">
+        {(props.users[0] && props.current_user) ?
+          <MapContainer current_user={props.current_user} latitude={props.current_user.latitude} longitude={props.current_user.longitude} addresses={props.users}/>
+          : null }
+        </div>
   </div>
   )
 }
@@ -31,7 +33,6 @@ return(
 
 
 const mapStateToProps = state => {
-  // console.log("Map State TP in bakersearch", state)
   return {
     users: state.users.users,
     current_user: state.users.current_user.current_user
