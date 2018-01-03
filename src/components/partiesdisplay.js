@@ -25,11 +25,7 @@ const MyParties = (props) => {
                minute: "numeric"
              };
              {date.toLocaleString("en-US", options)}
-
-            console.log(date.getDate())
-            console.log(transact.purchaser_id)
             return <div key={index}>
-
             {index+1}. You will be delivering goods to  {transact.purchaser_id} on {monthNames[date.getMonth()]}  {date.getDate()}, {date.getFullYear()} at {date.getHours()}:{date.getMinutes()} coming to a total cost of ${transact.total_cost}. Click
             <NavLink to={`/transactions/${transact.id}`}> here </NavLink>
             to edit your order.
@@ -77,7 +73,7 @@ const MyParties = (props) => {
 }
 
 const mapStateToProps = state => {
-
+console.log('state so I can see users payload',state)
   return {
     baker_transactions: state.users.current_user.baker_transactions,
     purchaser_transactions: state.users.current_user.purchaser_transactions,

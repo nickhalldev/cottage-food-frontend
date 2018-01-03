@@ -108,7 +108,6 @@ class Recipe extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('state in props',state)
   return {
     current_user: state.users,
     user_id: state.users.current_user.current_user.id

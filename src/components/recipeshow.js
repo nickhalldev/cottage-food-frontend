@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom"
 import { Form } from "semantic-ui-react";
+import * as actions from "../actions/index"
+
 
 const url = "http://localhost:3001/api/v1/"
 
@@ -56,7 +58,10 @@ handleSubmit = () => {
     headers,
     body: JSON.stringify(body)
   })
-  .then(res => this.props.history.push('/myrecipes'))
+  .then(res => {
+    this.props.fetchingAllUserData(this.props.user_id)
+    this.props.history.push('/myrecipes')
+  })
 };
 
 // deleteRecipe = () => {
@@ -115,8 +120,10 @@ return(
 const mapStateToProps = state => {
   return {
     users: state.users.users,
-    current_user: state.users.current_user.current_user
+    current_user: state.users.current_user.current_user,
+    user_id: state.users.current_user.current_user.id
+
   }
 }
 
-export default withRouter(connect(mapStateToProps, null)(RecipeShow))
+export default withRouter(connect(mapStateToProps, actions)(RecipeShow))

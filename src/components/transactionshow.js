@@ -4,6 +4,8 @@ import { withRouter } from "react-router-dom"
 import Datetime from 'react-datetime';
 import moment from "moment"
 import { Form } from "semantic-ui-react";
+import * as actions from "../actions/index"
+
 
 
 const url = "http://localhost:3001/api/v1/"
@@ -59,14 +61,16 @@ handleSubmit = () => {
     total_cost: this.state.totalCost,
     delivery_date_time: this.state.eventDateTime,
   }
-  console.log(body)
   fetch(`${url}transacts/${transaction_id}`, {
     method: "PATCH",
     headers,
     body: JSON.stringify(body)
 })
-  .then(res => this.props.history.push('/myparties'))
-}
+  .then(res => {
+    this.props.fetchingAllUserData(this.props.user_id)
+    this.props.history.push('/myparties')
+  })
+};
 
 deleteRecipe = () => {
   let transaction_id = this.props.match.params.id
@@ -82,7 +86,10 @@ deleteRecipe = () => {
     body: JSON.stringify({
 
     })
-  }).then(res => this.props.history.push('/myparties'))
+  }).then(res => {
+    this.props.fetchingAllUserData(this.props.user_id)
+    this.props.history.push('/myparties')
+  })
 }
 
 
@@ -126,8 +133,10 @@ return(
 const mapStateToProps = state => {
   return {
     users: state.users.users,
-    current_user: state.users.current_user.current_user
+    current_user: state.users.current_user.current_user,
+    user_id: state.users.current_user.current_user.id
+
   }
 }
 
-export default withRouter(connect(mapStateToProps, null)(TransactionShow))
+export default withRouter(connect(mapStateToProps, actions)(TransactionShow))

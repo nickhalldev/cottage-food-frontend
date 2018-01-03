@@ -17,8 +17,6 @@ import * as actions from "./actions/index"
 import { withRouter, Route} from "react-router-dom";
 import Navbar from './components/navbar'
 
-
-
 class App extends React.Component {
   constructor(props){
     super(props)
@@ -65,7 +63,6 @@ class App extends React.Component {
          )
       }
 
-
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" render={() => <Login />}/>
 
@@ -85,19 +82,12 @@ class App extends React.Component {
 
         <Route exact path="/baker/:id" render={() => <BakerShow />}/>
         <Route exact path="/transactions/:id" render={() => <TransactionShow />}/>
-
-
-
-
       </div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  // console.log('im current user',state.users.current_user)
-  // console.log('im all users',state.users.users)
-
   return {
     users: state.users.users,
     current_user: state.users

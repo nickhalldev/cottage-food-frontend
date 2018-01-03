@@ -1,4 +1,4 @@
-import { SET_USER, SET_USERS, LOGOUT } from './types';
+import { SET_USER, SET_USERS, LOGOUT, SET_USERS_FOR_TRANSACTIONS } from './types';
 import { login, fetchUser, fetchUsers, fetchUserData } from '../api/index.js'
 
 
@@ -37,11 +37,10 @@ export function fetchingAllUserData(user_id){
     fetchUserData(user_id)
     .then(data => {
       if (data.error){
-        console.log('error');//add error handling later
+        console.log('error');
         return null
       } else {
         dispatch({ type: SET_USER, payload: data })
-        // history.push("/profile")
       }
     })
   }
@@ -57,6 +56,22 @@ export function fetchingUsers(){
       }
       else {
         dispatch({ type: SET_USERS, payload: data})
+      }
+    })
+  }
+}
+
+export function fetchingTransactionUsers(){
+  return function (dispatch){
+    fetchUsers()
+    .then(data => {
+      if (data.error){
+        console.log('error')
+        return null
+      }
+      else {
+
+        dispatch({ type: SET_USERS_FOR_TRANSACTIONS, payload: data})
       }
     })
   }
