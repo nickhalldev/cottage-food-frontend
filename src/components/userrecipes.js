@@ -8,7 +8,7 @@ const UserRecipesButton = (props) => {
     return(
       <div>
       <NavLink to='/myrecipes'>
-        <button className='ui inverted red button'>
+        <button className='ui inverted red button opacity'>
           My Recipes
         </button>
       </NavLink>

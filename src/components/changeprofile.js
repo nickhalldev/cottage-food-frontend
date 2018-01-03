@@ -7,7 +7,7 @@ const ProfileButton = (props) => {
     return(
       <div>
       <NavLink to='/profile'>
-        <button className='ui inverted red button'>
+        <button className='ui inverted red button opacity'>
           Profile
         </button>
       </NavLink>

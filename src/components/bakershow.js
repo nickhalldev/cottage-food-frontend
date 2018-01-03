@@ -43,7 +43,7 @@ fetchBaker = (baker_id) => {
     lastname: res.current_user.lastname,
     latitude: res.current_user.latitude,
     longitude: res.current_user.longitude,
-    addresses:[{username: res.current_user.username, latitude: res.current_user.latitude, longitude: res.current_user.longitude}]
+    addresses:[{id: res.current_user.id, firstname: res.current_user.firstname, username: res.current_user.username, latitude: res.current_user.latitude, longitude: res.current_user.longitude}]
     })
   )
 }

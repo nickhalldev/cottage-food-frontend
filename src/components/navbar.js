@@ -12,8 +12,10 @@ import ProfileButton from "./changeprofile"
 const Navbar = () => {
 
     return(
+
       <div className="navbar">
         <div className="ui inverted segment ui buttons">
+
           <ProfileButton />
           <UserRecipesButton />
           <NewRecipeButton />
@@ -21,6 +23,7 @@ const Navbar = () => {
           <SearchButton />
           <CottageFoodLawsButton />
           <LogoutButton />
+
         </div>
       </div>
   )

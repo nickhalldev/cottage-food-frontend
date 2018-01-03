@@ -1,5 +1,6 @@
 import React from 'react'
 import Map, { InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { NavLink } from "react-router-dom";
 
 
 export class MapContainer extends React.Component {
@@ -39,6 +40,7 @@ mapResults = () => {
       key={(result.id)}
       onClick={this.onMarkerClick}
       name={(result.firstname)}
+      title={result.id.toString()}
       position={
       {
         lat: parseFloat(result.latitude),
@@ -54,10 +56,12 @@ mapResults = () => {
 mapDisplay =  () => {
   const style = {
     display: 'block',
-    width: '50%',
-    height: '50%'
+    width: '75%',
+    height: '100%'
   }
-  return (<Map
+  return (
+
+    <Map
   onClick={this.onMapClicked}
   google={this.props.google}
   zoom={13}
@@ -75,7 +79,8 @@ mapDisplay =  () => {
     visible={this.state.showingInfoWindow}>
     <div>
 
-      <h1>{this.state.selectedPlace.name}</h1>
+        <a href={`/baker/${this.state.selectedPlace.title}`}>{this.state.selectedPlace.name}</a>
+
     </div>
  </InfoWindow>
   </Map>)
@@ -83,14 +88,14 @@ mapDisplay =  () => {
 
 render(){
 return (
-  <div>
-        <div>
+
+        <div className="map">
         {(this.props.latitude && this.props.longitude) ?
            this.mapDisplay() :
           <p>loading map.....</p>
         }
       </div>
-      </div>
+
 )}
 }
 
