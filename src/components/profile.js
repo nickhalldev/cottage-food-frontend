@@ -3,8 +3,6 @@ import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux'
 import * as actions from "../actions/index"
 
-var titleize = require('titleize')
-
 class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +16,7 @@ class Profile extends React.Component {
     if (this.props.current_user.current_user) {
       return ( <div>
         <br />
-        <h3>Hey {titleize(this.props.current_user.current_user.firstname)} {titleize(this.props.current_user.current_user.lastname)}! Welcome back to Cottage, where you can buy or sell home baked meals to other locals.</h3>
+        <h3>Hey {this.props.current_user.current_user.firstname} {this.props.current_user.current_user.lastname}! Welcome back to Cottage, where you can buy or sell home baked meals to other locals.</h3>
 
         <h5>Please use the above navigation to plan your next sale or purchase. </h5>
 

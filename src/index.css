@@ -4,18 +4,36 @@ body {
   font-family: sans-serif;
 }
 
+/* ribbon behind login form below the navbar */
+.login{
+  /* background-image: url("https://prods3.imgix.net/images/articles/2016_02/Hero-Dinner-Party.jpg"); */
+  /* background-image: url("http://www.mfma.org/resources/Pictures/Cottage%20Foods%20Images/cottage%20food%20jams.jpg"); */
+  /* background-image: url("https://i.pinimg.com/736x/df/5e/e0/df5ee0f6b7aa0010d808a011bfdebeaf--outdoor-dinner-parties-summer-dinner-parties.jpg"); */
+/* background: linear-gradient(green, black); */
+  width: 15%;
+
+  /* color: white; */
+}
+
 .navbar{
   position: sticky;
   top: 0;
 }
+
+/* navbar background */
 .ui.inverted.segment.buttons{
 width: 100%;
 left:0;
 right:0;
-padding-left: 25%;
-padding-right: 20%;
+padding-left: 20%;
+padding-right: 15%;
+/* background: linear-gradient(green, black); */
+/* url('file:///Users/username/Desktop/background.png') */
+/* background-image: url("https://i.pinimg.com/736x/df/5e/e0/df5ee0f6b7aa0010d808a011bfdebeaf--outdoor-dinner-parties-summer-dinner-parties.jpg"); */
+background-image: url("https://prods3.imgix.net/images/articles/2016_02/Hero-Dinner-Party.jpg");
+background-size: cover;
+/* background-image: url("https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjttteUp7zYAhUNct8KHbUTAyAQjRwIBw&url=https%3A%2F%2Fwww.pinterest.com%2Ffeastie%2Fthe-ultimate-dinner-party%2F&psig=AOvVaw04bgCS163_kqvZCdwWLGZn&ust=1515085887823240"); */
 }
-
 
 .column {
     float: left;
@@ -36,8 +54,14 @@ padding-right: 20%;
    width: 100px;
 }
 
+/* background for login*/
 .ui.login-menu.menu{
-  background-color: black;
+  /* background-color: white; */
+  /* background-image: url("http://www.mfma.org/resources/Pictures/Cottage%20Foods%20Images/cottage%20food%20jams.jpg"); */
+
+  background-image: url("https://i.pinimg.com/736x/df/5e/e0/df5ee0f6b7aa0010d808a011bfdebeaf--outdoor-dinner-parties-summer-dinner-parties.jpg");
+  background-size: cover;
+
 }
 .a.left.item {
   text-align: left;

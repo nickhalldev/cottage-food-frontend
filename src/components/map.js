@@ -38,7 +38,7 @@ mapResults = () => {
       <Marker
       key={(result.id)}
       onClick={this.onMarkerClick}
-      name={(result.username)}
+      name={(result.firstname)}
       position={
       {
         lat: parseFloat(result.latitude),

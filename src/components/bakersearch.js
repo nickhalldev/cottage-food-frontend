@@ -4,7 +4,6 @@ import { withRouter, NavLink } from "react-router-dom"
 import MapContainer from './map'
 
 const BakerSearch = (props) => {
-var titleize = require('titleize')
 
 let userVariable = props.users[0] ? (
       <div>
@@ -12,7 +11,7 @@ let userVariable = props.users[0] ? (
         {props.users.map((user, index) =>{
           if (user.id !== props.current_user.id)
           return <div className="user-links" key={user.id}>
-            <NavLink to={`/baker/${user.id}`}>{titleize(user.username)} </NavLink>
+            <NavLink to={`/baker/${user.id}`}>{user.firstname} </NavLink>
           </div>
         })}
       </div>
@@ -42,10 +41,4 @@ const mapStateToProps = state => {
   }
 }
 
-
 export default withRouter(connect(mapStateToProps, null)(BakerSearch))
-
-// <div className="column map-baker-search">
-// </div>
-// <div className="column user-baker-search">
-// </div>

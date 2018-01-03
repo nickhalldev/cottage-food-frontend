@@ -7,8 +7,6 @@ import BakerRecipe from './bakerRecipe'
 import moment from "moment"
 import * as actions from "../actions/index"
 
-
-var titleize = require('titleize')
 const url = "http://localhost:3001/api/v1/"
 
 class BakerShow extends React.Component {
@@ -112,7 +110,7 @@ render(){
 
 return(
   <div>
-    <h1>Buy the following recipes from {titleize(this.state.firstname)} {titleize(this.state.lastname)}</h1>
+    <h1>Buy the following recipes from {this.state.firstname} {this.state.lastname}</h1>
     <div >
     Please select date and time of delivery
     <Datetime

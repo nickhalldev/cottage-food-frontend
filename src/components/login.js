@@ -5,7 +5,6 @@ import { Form } from "semantic-ui-react";
 
 import { withRouter, } from "react-router-dom";
 
-
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +30,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="login">
         <h2>Log in</h2>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths="12">

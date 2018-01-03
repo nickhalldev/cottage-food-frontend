@@ -5,12 +5,12 @@ const LoginBar = props => {
   return (
     <Menu className="login-menu">
       {props.location === "/login" ? (
-        <Menu.Item position="left" name="Sign up" onClick={props.signup} className='ui inverted red button'>
-        Sign up here!
+        <Menu.Item position="left" name="Sign up" onClick={props.signup} className='ui inverted yellow button'>
+        Sign up
         </Menu.Item>
       ) : (
-        <Menu.Item position="left" name="To Login" onClick={props.backToLogin} className='ui inverted red button'>
-          Back to Login
+        <Menu.Item position="left" name="To Login" onClick={props.backToLogin} className='ui inverted yellow button'>
+          Login
         </Menu.Item>
       )}
     </Menu>

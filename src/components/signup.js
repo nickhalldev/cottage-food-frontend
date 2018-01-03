@@ -3,8 +3,8 @@ import { Form } from "semantic-ui-react";
 const url = "http://localhost:3001/api/v1/";
 
 class Signup extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       username: "",
@@ -37,7 +37,10 @@ class Signup extends React.Component {
       method: "POST",
       headers,
       body: JSON.stringify(body)
-    })
+    }).then(res =>
+      // console.log('this is what response is for signin',res)
+      this.props.history.push('/login')
+  )
     ;
   };
 
