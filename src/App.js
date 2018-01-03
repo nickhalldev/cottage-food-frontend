@@ -9,6 +9,7 @@ import RecipeShow from './components/recipeshow'
 import BakerSearch from './components/bakersearch'
 import CottageFoodMap from './components/cottagefoodmap'
 import BakerShow from './components/bakershow'
+import TransactionShow from './components/transactionshow'
 import MyParties from './components/partiesdisplay'
 import Profile from './components/profile'
 import { connect } from 'react-redux'
@@ -83,6 +84,8 @@ class App extends React.Component {
         <Route exact path="/myparties" render={() => <MyParties />}/>
 
         <Route exact path="/baker/:id" render={() => <BakerShow />}/>
+        <Route exact path="/transactions/:id" render={() => <TransactionShow />}/>
+
 
 
 

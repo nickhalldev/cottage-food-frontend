@@ -2,6 +2,8 @@ import React from "react";
 import { Form } from "semantic-ui-react";
 import { connect } from 'react-redux'
 import { withRouter } from "react-router-dom"
+import * as actions from "../actions/index"
+
 
 const url = "http://localhost:3001/api/v1/";
 
@@ -13,7 +15,7 @@ class Recipe extends React.Component {
       course_type: '',
       price: '',
       description: '',
-      image: '',
+      // image: '',
     };
   }
 
@@ -23,26 +25,38 @@ class Recipe extends React.Component {
     });
   };
 
+  handleDropdownChange = (e) => {
+    this.setState({
+        course_type: e.target.value
+    })
+  };
+
   handleSubmit = () => {
+
     const headers = {
       Accept: "application/json",
       "Content-Type": "application/json"
     };
-    const body = this.state;
+    const body = {body: this.state, user_id: this.props.user_id};
+
     fetch(`${url}recipes`, {
       method: "POST",
       headers,
       body: JSON.stringify(body)
+    }).then(res => {
+      this.props.fetchingAllUserData(this.props.user_id)
+      this.props.history.push('/myrecipes')
     })
-    ;
   };
 
   render() {
+
     return (
       <div>
+
         <h2>Add Recipe</h2>
         <Form onSubmit={this.handleSubmit}>
-        <Form.Group widths="12">
+        <Form.Group>
           <Form.Input
             name="name"
             onChange={this.handleChange}
@@ -62,7 +76,7 @@ class Recipe extends React.Component {
           </select>
         </div>
         <br />
-          <Form.Group widths="12">
+          <Form.Group>
             <Form.Input
               name="price"
               onChange={this.handleChange}
@@ -70,7 +84,7 @@ class Recipe extends React.Component {
               placeholder="Price"
             />
           </Form.Group>
-          <Form.Group widths="12">
+          <Form.Group className="ui fluid icon input">
             <Form.Input
               name="description"
               onChange={this.handleChange}
@@ -79,18 +93,14 @@ class Recipe extends React.Component {
               placeholder="Description"
             />
           </Form.Group>
-          <Form.Group widths="12">
-            <Form.Input
-              name="image"
-              onChange={this.handleChange}
-              label="Image"
-              type='text'
-              placeholder="Image"
-            />
-          </Form.Group>
+
 
           <Form.Button>Submit</Form.Button>
         </Form>
+
+        <div className="ui fluid icon input">
+          <input type="text" placeholder="Search a very wide input..." />
+        </div>
 
       </div>
     );
@@ -98,9 +108,11 @@ class Recipe extends React.Component {
 }
 
 const mapStateToProps = state => {
+  console.log('state in props',state)
   return {
     current_user: state.users,
+    user_id: state.users.current_user.current_user.id
   }
 }
 
-export default withRouter(connect(mapStateToProps, null)(Recipe))
+export default withRouter(connect(mapStateToProps, actions)(Recipe))

@@ -8,7 +8,7 @@ const CottageFoodLawsButton = (props) => {
       <div>
       <NavLink to='/cottagelaws'>
         <button className='ui inverted green button'>
-          US cottage laws
+          U.S. Cottage Laws
         </button>
       </NavLink>
       </div>

@@ -22,19 +22,13 @@ padding-right: 20%;
     padding: 10px;
 }
 
-/*splitting out the map*/
-.left {
-  width: 8%;
-}
-.right {
-
+.map-width-fix{
+  width: 350px
 }
 
-.user-links{
-  width: 10%;
-
+.description-input{
+  width:250px;
 }
-
 .select-box {
    -webkit-border-radius: 20px;
    -moz-border-radius: 20px;
@@ -76,13 +70,17 @@ padding-right: 20%;
   background-color: red;
 }
 
-.map-baker-search{
 
+/*splitting out the map*/
+.map-baker-search{
   width: 75%;
   height: 300px;
   float: right;
 }
+.user-links{
+  width: 10%;
 
+}
 
 
 

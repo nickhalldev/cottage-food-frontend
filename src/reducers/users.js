@@ -4,7 +4,7 @@ import {
   SET_USERS,
 } from "../actions/types"
 
-const defaultState = { current_user: {}, users: {} }
+const defaultState = { current_user: {current_user: {}}, users: {} }
 
 export default function users(state = defaultState, action){
   switch(action.type){

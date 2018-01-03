@@ -5,7 +5,10 @@ import Datetime from 'react-datetime';
 import MapContainer from './map'
 import BakerRecipe from './bakerRecipe'
 import moment from "moment"
+import * as actions from "../actions/index"
 
+
+var titleize = require('titleize')
 const url = "http://localhost:3001/api/v1/"
 
 class BakerShow extends React.Component {
@@ -18,6 +21,8 @@ class BakerShow extends React.Component {
       totalCost: 0,
       recipeTransactions: {},
       addresses: [],
+      firstname: '',
+      lastname: '',
     }
     this.handleTotalCostChange = this.handleTotalCostChange.bind(this)
   }
@@ -81,7 +86,11 @@ handleSubmit = () => {
       total_cost: this.state.totalCost,
       delivery_date_time: this.state.eventDateTime
     })
-  }).then(res => res.json())
+  }).then(res => {
+    this.props.fetchingAllUserData(this.props.user_id)
+    this.props.history.push('/myparties')
+
+  })
 }
 
 recipesVariable = () => {
@@ -103,7 +112,7 @@ render(){
 
 return(
   <div>
-    <h1>Buy the following recipes from {this.state.firstname} {this.state.lastname}</h1>
+    <h1>Buy the following recipes from {titleize(this.state.firstname)} {titleize(this.state.lastname)}</h1>
     <div >
     Please select date and time of delivery
     <Datetime
@@ -130,8 +139,9 @@ return(
 const mapStateToProps = state => {
   return {
     users: state.users.users,
-    current_user: state.users.current_user.current_user
+    current_user: state.users.current_user.current_user,
+    user_id: state.users.current_user.current_user.id
   }
 }
 
-export default withRouter(connect(mapStateToProps, null)(BakerShow))
+export default withRouter(connect(mapStateToProps, actions)(BakerShow))
