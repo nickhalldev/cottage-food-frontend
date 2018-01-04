@@ -40,7 +40,7 @@ export class CottageFoodMap extends React.Component{
   render(){
     return (
         <div>
-        <br /> <br />
+      
         <div className="map-key">
         Map Key
         <div>
@@ -49,7 +49,7 @@ export class CottageFoodMap extends React.Component{
         </div>
         <div>
           <div className="key-blue"></div>
-          Cottage food is allowed, besides meat and dairy products
+          Allowed, besides meat and dairy products
         </div>
         <div>
           <div className="key-purple"></div>

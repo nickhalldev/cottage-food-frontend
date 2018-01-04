@@ -4,6 +4,11 @@ body {
   font-family: sans-serif;
 }
 
+.container-class{
+  padding: 0 5%;
+  padding-top: 40px;
+}
+
 /* ribbon behind login form below the navbar */
 .login{
   /* background-image: url("https://prods3.imgix.net/images/articles/2016_02/Hero-Dinner-Party.jpg"); */
@@ -19,13 +24,24 @@ padding-top: 100px;
 width: 100%;
 } */
 
-.map{
-    overflow:visible;
-    min-height: 350px;
-    margin-left: 12.5%;
-    margin-top: 50px;
+.description-box{
+  width: 600px;
 }
 
+.map{
+    overflow:visible;
+    min-height: 300px;
+    max-height: 500px;
+    max-width: 800px;
+
+    margin-top: 50px;
+    /* position: fixed; */
+}
+
+.baker-search-text{
+  text-align: center;
+  margin-top: 5px;
+}
 .navbar{
   position: sticky;
   top: 0;
@@ -36,8 +52,8 @@ width: 100%;
 width: 100%;
 left:0;
 right:0;
-padding-left: 20%;
-padding-right: 15%;
+padding-left: 22.5%;
+padding-right: 17.5%;
 /* background: linear-gradient(green, black); */
 /* url('file:///Users/username/Desktop/background.png') */
 /* background-image: url("https://i.pinimg.com/736x/df/5e/e0/df5ee0f6b7aa0010d808a011bfdebeaf--outdoor-dinner-parties-summer-dinner-parties.jpg"); */

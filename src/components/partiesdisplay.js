@@ -26,7 +26,7 @@ const MyParties = (props) => {
              };
              {date.toLocaleString("en-US", options)}
             return <div key={index}>
-            {index+1}. You will be delivering goods to  {transact.purchaser_id} on {monthNames[date.getMonth()]}  {date.getDate()}, {date.getFullYear()} at {date.getHours()}:{date.getMinutes()} coming to a total cost of ${transact.total_cost}. Click
+            {index+1}. You will be delivering goods to  {transact.purchaser_name} on {monthNames[date.getMonth()]}  {date.getDate()}, {date.getFullYear()} at {date.getHours()}:{date.getMinutes()} coming to a total cost of ${transact.total_cost}. Click
             <NavLink to={`/transactions/${transact.id}`}> here </NavLink>
             to edit your order.
 
@@ -53,7 +53,7 @@ const MyParties = (props) => {
                };
                {date.toLocaleString("en-US", options)}
               return <div key={index}>
-              {index+1}. <NavLink to={`/baker/${transact.id}`}> {transact.baker_id} </NavLink> will be delivering goods on {monthNames[date.getMonth()]}  {date.getDate()}, {date.getFullYear()} at {date.getHours()}:{date.getMinutes()} at a total cost of ${transact.total_cost}. Click
+              {index+1}. <NavLink to={`/baker/${transact.baker_id}`}> {transact.baker_name} </NavLink> will be delivering goods on {monthNames[date.getMonth()]}  {date.getDate()}, {date.getFullYear()} at {date.getHours()}:{date.getMinutes()} at a total cost of ${transact.total_cost}. Click
               <NavLink to={`/transactions/${transact.id}`}> here </NavLink>
                to edit your order.
               </div>
@@ -73,7 +73,6 @@ const MyParties = (props) => {
 }
 
 const mapStateToProps = state => {
-console.log('state so I can see users payload',state)
   return {
     baker_transactions: state.users.current_user.baker_transactions,
     purchaser_transactions: state.users.current_user.purchaser_transactions,

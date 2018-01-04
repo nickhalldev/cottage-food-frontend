@@ -63,6 +63,7 @@ class App extends React.Component {
          )
       }
 
+      <div className="container-class">
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" render={() => <Login />}/>
 
@@ -82,6 +83,7 @@ class App extends React.Component {
 
         <Route exact path="/baker/:id" render={() => <BakerShow />}/>
         <Route exact path="/transactions/:id" render={() => <TransactionShow />}/>
+      </div>
       </div>
     );
   }

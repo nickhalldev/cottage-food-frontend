@@ -56,8 +56,9 @@ mapResults = () => {
 mapDisplay =  () => {
   const style = {
     display: 'block',
-    width: '75%',
-    height: '100%'
+    width: '90%',
+    height: '500px',
+    position: 'fixed',
   }
   return (
 

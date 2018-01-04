@@ -53,7 +53,7 @@ class Recipe extends React.Component {
 
     return (
       <div>
-
+    
         <h2>Add Recipe</h2>
         <Form onSubmit={this.handleSubmit}>
         <Form.Group>
@@ -91,6 +91,7 @@ class Recipe extends React.Component {
               label="Description"
               type='text'
               placeholder="Description"
+              className="description-box"
             />
           </Form.Group>
 
@@ -98,9 +99,7 @@ class Recipe extends React.Component {
           <Form.Button>Submit</Form.Button>
         </Form>
 
-        <div className="ui fluid icon input">
-          <input type="text" placeholder="Search a very wide input..." />
-        </div>
+
 
       </div>
     );

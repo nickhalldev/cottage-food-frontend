@@ -72,9 +72,9 @@ render(){
 
 return(
   <div>
-
+  
     <Form onSubmit={this.handleSubmit}>
-      <Form.Group widths="12">
+      <Form.Group>
         <Form.Input
           name="name"
           onChange={this.handleChange}
@@ -85,7 +85,7 @@ return(
         />
         </Form.Group>
 
-        <Form.Group widths="12">
+        <Form.Group>
           <Form.Input
             name="price"
             onChange={this.handleChange}
@@ -95,7 +95,7 @@ return(
           />
         </Form.Group>
 
-        <Form.Group widths="12">
+        <Form.Group >
           <Form.Input
             name="description"
             onChange={this.handleChange}
@@ -103,6 +103,7 @@ return(
             type='text'
             placeholder={this.state.description}
             value={this.state.description}
+            className="description-box"
           />
         </Form.Group>
 

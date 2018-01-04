@@ -20,8 +20,9 @@ let userVariable = props.users[0] ? (
 return(
 
     <div>
-
-    
+        <div className="baker-search-text">
+          <h2>Select a baker near you to find some delicious treats.</h2>
+        </div>
         <div className="baker-map-container">
         {(props.users[0] && props.current_user) ?
           <MapContainer current_user={props.current_user} latitude={props.current_user.latitude} longitude={props.current_user.longitude} addresses={props.users}/>
