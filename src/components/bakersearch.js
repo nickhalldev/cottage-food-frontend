@@ -1,21 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { withRouter, NavLink } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 import MapContainer from './map'
 
 const BakerSearch = (props) => {
 
-let userVariable = props.users[0] ? (
-      <div>
-      <h1>Available Bakers</h1>
-        {props.users.map((user, index) =>{
-          if (user.id !== props.current_user.id)
-          return <div className="user-links" key={user.id}>
-            <NavLink to={`/baker/${user.id}`}>{user.firstname} </NavLink>
-          </div>
-        })}
-      </div>
-  ) : null
+// let userVariable = props.users[0] ? (
+//       <div>
+//       <h1>Available Bakers</h1>
+//         {props.users.map((user, index) =>{
+//           if (user.id !== props.current_user.id)
+//           return <div className="user-links" key={user.id}>
+//             <NavLink to={`/baker/${user.id}`}>{user.firstname} </NavLink>
+//           </div>
+//         })}
+//       </div>
+//   ) : null
 
 return(
 

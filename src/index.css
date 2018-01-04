@@ -52,7 +52,7 @@ width: 100%;
 width: 100%;
 left:0;
 right:0;
-padding-left: 22.5%;
+padding-left: 27.5%;
 padding-right: 17.5%;
 /* background: linear-gradient(green, black); */
 /* url('file:///Users/username/Desktop/background.png') */
@@ -80,7 +80,7 @@ background-size: cover;
    -webkit-border-radius: 20px;
    -moz-border-radius: 20px;
    border-radius: 20px;
-   width: 100px;
+   width: 150px;
 }
 
 /* background for login*/
@@ -113,6 +113,8 @@ background-size: cover;
   margin-right: 5px;
 }
 
+
+/*cottagefoodmap.js - colors for map key*/
 .key-blue{
   background-color: blue;
 }
@@ -121,6 +123,9 @@ background-size: cover;
 }
 .key-red{
   background-color: red;
+}
+.key-green{
+  background-color: green;
 }
 
 

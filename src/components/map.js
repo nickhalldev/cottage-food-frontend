@@ -1,6 +1,5 @@
 import React from 'react'
 import Map, { InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import { NavLink } from "react-router-dom";
 
 
 export class MapContainer extends React.Component {

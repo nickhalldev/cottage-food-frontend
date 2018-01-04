@@ -31,17 +31,17 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login">
-        <h2>Log in</h2>
+        <h1>Log in</h1>
         <Form onSubmit={this.handleSubmit}>
-          <Form.Group widths="12">
+          <h3><Form.Group>
             <Form.Input
               name="username"
               onChange={this.handleChange}
               label="Username"
-              placeholder="username"
+              placeholder="Username"
             />
           </Form.Group>
-          <Form.Group widths="12">
+          <Form.Group>
             <Form.Input
               name="password"
               onChange={this.handleChange}
@@ -49,7 +49,7 @@ class Login extends React.Component {
               type="password"
               placeholder="Password"
             />
-          </Form.Group>
+          </Form.Group></h3>
           <Form.Button>Submit</Form.Button>
         </Form>
       </div>

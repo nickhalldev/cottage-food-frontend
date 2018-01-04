@@ -72,9 +72,9 @@ render(){
 
 return(
   <div>
-  
+
     <Form onSubmit={this.handleSubmit}>
-      <Form.Group>
+      <h3><Form.Group>
         <Form.Input
           name="name"
           onChange={this.handleChange}
@@ -105,7 +105,7 @@ return(
             value={this.state.description}
             className="description-box"
           />
-        </Form.Group>
+        </Form.Group></h3>
 
         <Form.Button>Submit Recipe Edits</Form.Button>
       </Form>

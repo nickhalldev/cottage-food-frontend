@@ -53,10 +53,10 @@ class Recipe extends React.Component {
 
     return (
       <div>
-    
+
         <h2>Add Recipe</h2>
         <Form onSubmit={this.handleSubmit}>
-        <Form.Group>
+        <h3><Form.Group>
           <Form.Input
             name="name"
             onChange={this.handleChange}
@@ -93,7 +93,7 @@ class Recipe extends React.Component {
               placeholder="Description"
               className="description-box"
             />
-          </Form.Group>
+          </Form.Group></h3>
 
 
           <Form.Button>Submit</Form.Button>

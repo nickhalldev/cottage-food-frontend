@@ -47,9 +47,9 @@ class Signup extends React.Component {
   render() {
     return (
       <div>
-        <h2>Signup</h2>
+        <h1>Signup</h1>
         <Form onSubmit={this.handleSubmit}>
-        <Form.Group widths="12">
+        <Form.Group>
           <Form.Input
             name="firstname"
             onChange={this.handleChange}
@@ -58,7 +58,7 @@ class Signup extends React.Component {
             placeholder="First Name"
           />
           </Form.Group>
-          <Form.Group widths="12">
+          <Form.Group>
             <Form.Input
               name="lastname"
               onChange={this.handleChange}
@@ -67,15 +67,15 @@ class Signup extends React.Component {
               placeholder="Last Name"
             />
             </Form.Group>
-          <Form.Group widths="12">
+          <Form.Group>
             <Form.Input
               name="username"
               onChange={this.handleChange}
               label="Username"
-              placeholder="username"
+              placeholder="Username"
             />
           </Form.Group>
-          <Form.Group widths="12">
+          <Form.Group>
             <Form.Input
               name="password"
               onChange={this.handleChange}
@@ -84,16 +84,8 @@ class Signup extends React.Component {
               placeholder="Password"
             />
           </Form.Group>
-          <Form.Group widths="12">
-            <Form.Input
-              name="email"
-              onChange={this.handleChange}
-              label="Email"
-              type="text"
-              placeholder="Email"
-            />
-            </Form.Group>
-          <Form.Group widths="12">
+
+          <Form.Group>
             <Form.Input
               name="address"
               onChange={this.handleChange}
@@ -102,7 +94,7 @@ class Signup extends React.Component {
               placeholder="Address"
             />
           </Form.Group>
-          <Form.Group widths="12">
+          <Form.Group>
             <Form.Input
               name="city"
               onChange={this.handleChange}
@@ -111,7 +103,7 @@ class Signup extends React.Component {
               placeholder="City"
             />
           </Form.Group>
-          <Form.Group widths="12">
+          <Form.Group>
             <Form.Input
               name="state"
               onChange={this.handleChange}
@@ -120,7 +112,7 @@ class Signup extends React.Component {
               placeholder="State"
             />
           </Form.Group>
-          <Form.Group widths="12">
+          <Form.Group>
             <Form.Input
               name="zip"
               onChange={this.handleChange}
@@ -129,15 +121,6 @@ class Signup extends React.Component {
               placeholder="Zip"
             />
             </Form.Group>
-          <Form.Group widths="12">
-            <Form.Input
-              name="phone"
-              onChange={this.handleChange}
-              label="Phone"
-              type="text"
-              placeholder="Phone"
-            />
-          </Form.Group>
           <Form.Button>Submit</Form.Button>
         </Form>
 

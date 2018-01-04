@@ -18,7 +18,7 @@ let recipeVariable = props.recipes ? (
 
 return(
   <div>
-  {recipeVariable}
+  <h3>{recipeVariable}</h3>
 
   </div>
 )
