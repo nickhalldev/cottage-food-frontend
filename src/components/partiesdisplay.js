@@ -2,11 +2,14 @@ import React from 'react';
 import * as actions from "../actions/index"
 import { connect } from 'react-redux'
 import { withRouter, NavLink } from "react-router-dom"
-
+import { Card } from 'semantic-ui-react'
 
 
 
 const MyParties = (props) => {
+  const bakerItems =[]
+  const purchaserItems =[]
+
   let bakerVariable = props.baker_transactions ? (
         <div>
         <h1>Don&#39;t forget to make these deliveries.</h1>
@@ -25,12 +28,20 @@ const MyParties = (props) => {
                minute: "numeric"
              };
              {date.toLocaleString("en-US", options)}
-            return <div key={index}>
-            {index+1}. You&#39;re delivering to {transact.purchaser_name} on {monthNames[date.getMonth()]}  {date.getDate()}, {date.getFullYear()} at {date.getHours()}:{date.getMinutes()} and will get ${transact.total_cost}. Click
-            <NavLink to={`/transactions/${transact.id}`}> here </NavLink>
-            to edit their order.
+             bakerItems.push({
+               header: `To ${transact.purchaser_name} `,
+               description: `You'll be delivering on ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}. Click card to edit.`,
+               meta: `Price - $${transact.total_cost} `,
+               href: `/transactions/${transact.id}`
+             })
+             })
 
-            </div>
+            // return <div key={index}>
+            // {index+1}. You&#39;re delivering to {transact.purchaser_name} on {monthNames[date.getMonth()]}  {date.getDate()}, {date.getFullYear()} at {date.getHours()}:{date.getMinutes()} and will get ${transact.total_cost}. Click
+            // <NavLink to={`/transactions/${transact.id}`}> here </NavLink>
+            // to edit their order.
+
+            // </div>
           })}
 
         </div>
@@ -38,7 +49,7 @@ const MyParties = (props) => {
 
     let purchaserVariable = props.purchaser_transactions ? (
           <div>
-            <h1>These deliveries are coming your way soon.</h1>
+
             {props.purchaser_transactions.map((transact, index) =>{
               const monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
               const date = new Date(transact.delivery_date_time);
@@ -50,14 +61,24 @@ const MyParties = (props) => {
                  day: "numeric",
                  hour: "numeric",
                  minute: "numeric"
-                 
+
                };
                {date.toLocaleString("en-US", options)}
-              return <div key={index}>
-              {index+1}. <NavLink to={`/baker/${transact.baker_id}`}> {transact.baker_name} </NavLink> will be delivering goods on {monthNames[date.getMonth()]}  {date.getDate()}, {date.getFullYear()} at {date.getHours()}:{date.getMinutes()} for ${transact.total_cost}. Click
-              <NavLink to={`/transactions/${transact.id}`}> here </NavLink>
-               to edit your order.
-              </div>
+               purchaserItems.push({
+                 header: `From ${transact.baker_name} `,
+                 description: `${transact.baker_name} is delivering on ${monthNames[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}. Click card to edit.`,
+                 meta: `Price - $${transact.total_cost}  `,
+                 href: `/transactions/${transact.id}`
+                 // <NavLink to={`/baker/${transact.baker_id}`}> {transact.baker_name} </NavLink>
+               })
+               })
+
+
+              // return <div key={index}>
+              // {index+1}. <NavLink to={`/baker/${transact.baker_id}`}> {transact.baker_name} </NavLink> delivers {monthNames[date.getMonth()]}  {date.getDate()}, {date.getFullYear()} at {date.getHours()}:{date.getMinutes()} for ${transact.total_cost}. Click
+              // <NavLink to={`/transactions/${transact.id}`}> here </NavLink>
+              //  to edit your order.
+
             })}
           </div>
       ) : null
@@ -65,9 +86,12 @@ const MyParties = (props) => {
   return(
     <div>
 
-  <h3>{bakerVariable}</h3>
+<h1>Don&#39;t forget to make these deliveries.</h1>
+  <Card.Group items={bakerItems} />
   <br />
-  <h3>{purchaserVariable}</h3>
+<h1>These deliveries are coming your way soon.</h1>
+  <Card.Group items={purchaserItems} />
+
 
     </div>
   )

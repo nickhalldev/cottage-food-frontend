@@ -20,11 +20,10 @@ export class CottageFoodMap extends React.Component{
   };
 
   statesCustomConfig = () => {
-    console.log(this.props.current_user.state)
     let statesAndColors = {};
-    const blueStates = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV']
-    const redStates = ['NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA']
-    const purpleStates = ['RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
+    const blueStates = ['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV']
+    const redStates = ['NH','NJ','NM','NC','ND','OH','OK','OR','PA']
+    const purpleStates = ['IN','RI','NY','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
 
     const greenStates = [this.props.current_user.state]
 
@@ -81,7 +80,6 @@ export class CottageFoodMap extends React.Component{
 }
 
 const mapStateToProps = state => {
-  console.log('state.user in map state',state.users.current_user.current_user)
   return {
     current_user: state.users.current_user.current_user
   }

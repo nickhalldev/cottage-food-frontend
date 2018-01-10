@@ -2,24 +2,26 @@ import React from 'react';
 import * as actions from "../actions/index"
 import { connect } from 'react-redux'
 import { withRouter, NavLink } from "react-router-dom"
+import { Card } from 'semantic-ui-react'
 
 const MyRecipes = (props) => {
 
-let recipeVariable = props.recipes ? (
-      <div>
-      <h1>My Saved Recipes</h1>
-        {props.recipes.map((recipe, index) =>{
-          return <div key={index}>
-          <NavLink to={`myrecipes/${recipe.id}`}>{recipe.name}</NavLink>
-          </div>
-        })}
-      </div>
+const items = []
+
+let itemsVariable = props.recipes ? (
+        props.recipes.map((recipe, index) =>{
+          items.push({
+            header: `${recipe.name}`,
+            description: `${recipe.description}`,
+            meta: `Price - $${recipe.price} `,
+            href: `myrecipes/${recipe.id}`
+          })
+          })
   ) : null
 
 return(
   <div>
-  <h3>{recipeVariable}</h3>
-
+  <Card.Group items={items} />
   </div>
 )
 

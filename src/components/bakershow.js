@@ -115,7 +115,7 @@ return(
     Please select date and time of delivery
     <Datetime
     onChange={this.handleDateChange}
-    inputProps={{ placeholder: new Date() }}
+
     /> <br />
   </div>
   <div>

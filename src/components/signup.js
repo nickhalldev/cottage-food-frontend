@@ -1,5 +1,9 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
+import * as actions from "../actions/index"
+import { connect } from 'react-redux'
+import { withRouter } from "react-router-dom"
+
 const url = "http://localhost:3001/api/v1/";
 
 class Signup extends React.Component {
@@ -37,10 +41,11 @@ class Signup extends React.Component {
       method: "POST",
       headers,
       body: JSON.stringify(body)
-    }).then(res =>
+    }).then(res => {
       // console.log('this is what response is for signin',res)
+      this.props.fetchingAllUserData(this.props.user_id)
       this.props.history.push('/login')
-  )
+  })
     ;
   };
 
@@ -128,4 +133,10 @@ class Signup extends React.Component {
     );
   }
 }
-export default Signup;
+
+const mapStateToProps = state => {
+  return {
+    current_user: state.users,
+  }
+}
+export default withRouter(connect(mapStateToProps, actions)(Signup))
