@@ -6,14 +6,16 @@ Ecommerce site connecting buyers and sellers of home-made food based on location
 
 Copy the link of repository upper right of this page (clone or download).
 
-```Git clone git@github.com:nh83012001/cottage-food-frontend.git
+```
+Git clone git@github.com:nh83012001/cottage-food-frontend.git
 ```
 
 ### Installing
 
 Once you have gone into the folder for Midpoint, the following will download the necessary files for our app to run.
 
-```type "npm install && npm start" into terminal to download dependencies and start server
+```
+Type "npm install && npm start" into terminal to download dependencies and start server
 ```
 
 ## Built With
