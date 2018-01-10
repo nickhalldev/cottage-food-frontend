@@ -98,6 +98,7 @@ render(){
 
 return(
   <div>
+
   <Form onSubmit={this.handleSubmit}>
     <Form.Group widths="12">
       <Form.Input
@@ -113,7 +114,7 @@ return(
       Date and Delivery Time
       <Datetime
       onChange={this.handleDateChange}
-      inputProps={{ placeholder: new Date() }}
+  
 
       />
       </div>

@@ -8,7 +8,7 @@ const UserPartiesButton = (props) => {
       <div>
       <NavLink to='/myparties'>
         <button className='ui inverted blue button opacity'>
-          My Parties
+          My Events
         </button>
       </NavLink>
       </div>
