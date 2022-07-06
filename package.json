@@ -5,7 +5,7 @@
   "dependencies": {
     "d3": "^4.12.2",
     "google-maps-react": "^1.1.2",
-    "moment": "^2.20.1",
+    "moment": "^2.29.4",
     "react": "^0.14.9",
     "react-d3-map": "^0.8.3",
     "react-datetime": "^2.11.1",
